@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using InputSystem;
+using Player;
 using UnityEngine;
 
 namespace Scopes
@@ -23,8 +24,8 @@ namespace Scopes
         #endregion
 
         #region Subjects
-        
-        
+
+        [SerializeField] private PlayerMovementController playerMovementController;
 
         #endregion
 
@@ -32,15 +33,20 @@ namespace Scopes
         private void Awake()
         {
             Build();
+            Inject();
         }
+
+        
 
         private void Build()
         {
             _inputData = joystick;
-            
         }
         
-        
+        private void Inject()
+        {
+            playerMovementController.Construct(_inputData);
+        }
         
     }
 

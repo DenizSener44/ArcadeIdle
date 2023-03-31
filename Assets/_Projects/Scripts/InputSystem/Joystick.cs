@@ -7,6 +7,9 @@ namespace InputSystem
     public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler,IInputData
     {
         public Action<Vector2> OnInputUpdate { get; set; }
+        public Action OnInputReleased { get; set; }    
+        public Action OnInputStarted { get; set; }
+
 
         [SerializeField] private float handleRange = 1;
         [SerializeField] private float deadZone = 0;
@@ -39,12 +42,14 @@ namespace InputSystem
             background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
             background.gameObject.SetActive(true);
             OnDrag(eventData);
+            OnInputStarted.Invoke();
         }
         public void OnPointerUp(PointerEventData eventData)
         {
             background.gameObject.SetActive(false);
             _input = Vector2.zero;
             handle.anchoredPosition = Vector2.zero;
+            OnInputReleased.Invoke();
         }
         public void OnDrag(PointerEventData eventData)
         {
