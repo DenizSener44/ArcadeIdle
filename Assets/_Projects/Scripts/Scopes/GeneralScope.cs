@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Buildings;
+using Enemy;
 using InputSystem;
 using Player;
 using UnityEngine;
@@ -12,7 +14,6 @@ namespace Scopes
         #region Entries
 
         [SerializeField] private Joystick joystick;
-        
 
         #endregion
 
@@ -20,12 +21,15 @@ namespace Scopes
         #region Outputs
 
         private IInputData _inputData;
-
+        private Transform _playerTransform;
+        private ISwordOpener _swordOpener;
         #endregion
 
         #region Subjects
 
         [SerializeField] private PlayerMovementController playerMovementController;
+        [SerializeField] private PlayerController playerController;
+        [SerializeField] private EnemyManager enemyManager;
 
         #endregion
 
@@ -41,11 +45,15 @@ namespace Scopes
         private void Build()
         {
             _inputData = joystick;
+            _playerTransform = playerMovementController.transform;
+            _swordOpener = playerController;
         }
         
         private void Inject()
         {
             playerMovementController.Construct(_inputData);
+            playerController.Construct(_inputData);
+            enemyManager.Construct(_playerTransform,_swordOpener);
         }
         
     }

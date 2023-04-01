@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2448376848532945832
 Transform:
@@ -96,10 +96,10 @@ GameObject:
   - component: {fileID: 2448376848967585171}
   m_Layer: 0
   m_Name: StoneMine
-  m_TagString: Untagged
+  m_TagString: StoneMine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2448376848967585169
 Transform:
@@ -129,7 +129,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &2448376848967585171
 MonoBehaviour:
@@ -144,12 +144,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionStartDuration: 0.5
-  interactionCompleteAmount: 5
+  interactionCompleteAmount: 1
   fillBar: {fileID: 3690139200378440994}
   health:
     health: 5
   collectable: {fileID: 8460491185569507138, guid: 95974934288880949ab48fd72726aaeb,
     type: 3}
+  minInstantiateRange: 2
+  maxInstantiateRange: 3
+  state: 2
 --- !u!1001 &2953334881668879202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FillBarUI
       objectReference: {fileID: 0}
+    - target: {fileID: 650272791173340755, guid: fb597aacf5068be49a87cec54968db9b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 650272792323729938, guid: fb597aacf5068be49a87cec54968db9b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -276,6 +284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 650272792323729939, guid: fb597aacf5068be49a87cec54968db9b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb597aacf5068be49a87cec54968db9b, type: 3}

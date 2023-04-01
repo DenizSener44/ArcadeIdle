@@ -17,6 +17,8 @@ namespace InteractionSystem
         [SerializeField] private Collectable collectable;
         [SerializeField] private float minInstantiateRange = 2;
         [SerializeField] private float maxInstantiateRange = 3;
+        public StateNames state;
+
         protected virtual void OnEnable()
         {
             fillBar.maxValue = interactionCompleteAmount;
@@ -47,7 +49,7 @@ namespace InteractionSystem
         private void CreateCollectable()
         {
             Vector3 sphere = Random.insideUnitSphere * Random.Range(minInstantiateRange,maxInstantiateRange);
-            sphere.y = 0;
+            sphere.y = 0.5f;
             Instantiate(collectable, transform.position + sphere, Quaternion.identity);
         }
 

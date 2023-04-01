@@ -71,11 +71,9 @@ namespace Player
 
         private IEnumerator MarketPlaceRoutine(MarketPlace marketPlace)
         {
-            Debug.Log("eeme");
             yield return new WaitForSeconds(marketPlace.interactionStartDuration);
             while (marketPlace.CanContinueInteraction(stack, out Collectable c))
             {
-                Debug.Log("eeme2");
                 yield return new WaitForSeconds(marketPlace.interactionCompleteAmount);
                 stack.Remove(c);
                 marketPlace.CompleteInteraction(c);
