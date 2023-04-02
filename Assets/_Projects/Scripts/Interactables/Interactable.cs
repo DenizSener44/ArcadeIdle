@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Collectables;
 using SideSystems;
 using UI;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace InteractionSystem
 {
     public abstract class Interactable : MonoBehaviour
     {
+        public VFXManager vfxManager;
+        
         public float interactionStartDuration;
         public float interactionCompleteAmount;
         public float interactionAnimationDuration;
@@ -19,9 +23,8 @@ namespace InteractionSystem
         [SerializeField] private Collectable collectable;
         [SerializeField] private float minInstantiateRange = 2;
         [SerializeField] private float maxInstantiateRange = 3;
-        
-        
-
+        [SerializeField] private ParticleSystem effect;
+        [SerializeField] private string toolTag = "Tool";
         protected virtual void OnEnable()
         {
             fillBar.maxValue = interactionCompleteAmount;
@@ -43,11 +46,14 @@ namespace InteractionSystem
 
         public virtual void CompleteInteraction()
         {
+            vfxManager.CreateEffect(effect,transform.position);
             fillBar.StopSlider();
             fillBar.InitializeSlider();
             health.SpendHealth();
             CreateCollectable();
         }
+
+        
 
         private void CreateCollectable()
         {

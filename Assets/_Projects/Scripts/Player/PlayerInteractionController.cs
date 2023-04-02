@@ -8,6 +8,8 @@ namespace Player
 {
     public class PlayerInteractionController : MonoBehaviour
     {
+        public ICameraShaker cameraShaker;
+        
         [SerializeField] private AnimationController animationController;
         [SerializeField] private float interactionspeed;
         
@@ -47,6 +49,7 @@ namespace Player
                 animationController.Attack();
                 _interactable.StartInteraction(interactionspeed);
                 yield return new WaitForSeconds(_interactable.interactionAnimationDuration);
+                cameraShaker.ShakeCam(CameraShakeType.Mild);
                 _interactable.CompleteInteraction();
             }
         }

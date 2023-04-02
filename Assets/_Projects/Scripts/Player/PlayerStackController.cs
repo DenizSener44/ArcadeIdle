@@ -10,6 +10,8 @@ namespace Player
 {
     public class PlayerStackController : MonoBehaviour
     {
+        public ICameraShaker cameraShaker;
+        
         [SerializeField] private int playerMaxCarryAmount;
         [SerializeField] private int playerCurrentCarryAmount;
         [SerializeField] private Transform stackParent;
@@ -18,6 +20,7 @@ namespace Player
         [SerializeField]private List<Collectable> stack = new List<Collectable>();
 
         private Coroutine _marketPlaceRoutine;
+        
 
         private void OnTriggerEnter(Collider other)
         {
@@ -53,6 +56,7 @@ namespace Player
             c.transform.SetParent(stackParent);
             c.transform.DOLocalJump(Vector3.up*(distanceBetweenStackedObjects*stack.Count),
                 2,1,collectableJumpDuration);
+            c.transform.DOLocalRotate(Vector3.zero, collectableJumpDuration);
         }
         private void TryStack(Collectable c)
         {
@@ -75,6 +79,7 @@ namespace Player
             while (marketPlace.CanContinueInteraction(stack, out Collectable c))
             {
                 yield return new WaitForSeconds(marketPlace.interactionCompleteAmount);
+                cameraShaker.ShakeCam(CameraShakeType.VeryMild);
                 stack.Remove(c);
                 marketPlace.CompleteInteraction(c);
                 ReArrangeStack();

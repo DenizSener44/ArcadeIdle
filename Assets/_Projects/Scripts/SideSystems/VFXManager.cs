@@ -56,5 +56,12 @@ namespace SideSystems
                 }
             }
         }
+
+        public void CreateEffect(ParticleSystem effect, Vector3 pos)
+        {
+            ParticleSystem e = Instantiate(effect, pos, effect.transform.rotation);
+            e.Play();
+            Destroy(e.gameObject,1);
+        }
     }
 }

@@ -92,8 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2448376848967585169}
-  - component: {fileID: 2448376848967585168}
   - component: {fileID: 2448376848967585171}
+  - component: {fileID: 2448376848967585168}
   m_Layer: 0
   m_Name: StoneMine
   m_TagString: StoneMine
@@ -118,6 +118,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2448376848967585171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448376848967585182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83caa8eaf6ba728418dfb2080c1e7c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxManager: {fileID: 0}
+  interactionStartDuration: 0.5
+  interactionCompleteAmount: 1
+  interactionAnimationDuration: 1.1
+  state: 2
+  fillBar: {fileID: 3690139200378440994}
+  health:
+    health: 5
+  collectable: {fileID: 8460491185569507138, guid: 95974934288880949ab48fd72726aaeb,
+    type: 3}
+  minInstantiateRange: 2
+  maxInstantiateRange: 3
+  effect: {fileID: 4938402933857282354, guid: c51830dc88f76494bbb7fd67d621b23e, type: 3}
+  toolTag: Pickaxe
 --- !u!65 &2448376848967585168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,29 +157,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2448376848967585171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2448376848967585182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83caa8eaf6ba728418dfb2080c1e7c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionStartDuration: 0.5
-  interactionCompleteAmount: 1
-  interactionAnimationDuration: 1.1
-  state: 2
-  fillBar: {fileID: 3690139200378440994}
-  health:
-    health: 5
-  collectable: {fileID: 8460491185569507138, guid: 95974934288880949ab48fd72726aaeb,
-    type: 3}
-  minInstantiateRange: 2
-  maxInstantiateRange: 3
 --- !u!1001 &2953334881668879202
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6472389354030873586}
-  - component: {fileID: 6472389354030873587}
   - component: {fileID: 6472389354030873596}
+  - component: {fileID: 6472389354030873587}
   m_Layer: 0
   m_Name: Tree
   m_TagString: WoodMine
@@ -35,6 +35,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6472389354030873596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6472389354030873597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518e9421d9cb03d46bc6d32950dac045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxManager: {fileID: 0}
+  interactionStartDuration: 0.5
+  interactionCompleteAmount: 1
+  interactionAnimationDuration: 1.1
+  state: 3
+  fillBar: {fileID: 5413019008335772481}
+  health:
+    health: 7
+  collectable: {fileID: 8460491185569507138, guid: bcc9f318d2830694cbe5aa8f22e738af,
+    type: 3}
+  minInstantiateRange: 2
+  maxInstantiateRange: 3
+  effect: {fileID: 6600124436449072647, guid: 8df3bcf19454337478ef029a9c4584db, type: 3}
+  toolTag: Axe
 --- !u!65 &6472389354030873587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48,29 +74,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6472389354030873596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6472389354030873597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 518e9421d9cb03d46bc6d32950dac045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionStartDuration: 0.5
-  interactionCompleteAmount: 1
-  interactionAnimationDuration: 1.1
-  state: 3
-  fillBar: {fileID: 5413019008335772481}
-  health:
-    health: 7
-  collectable: {fileID: 8460491185569507138, guid: bcc9f318d2830694cbe5aa8f22e738af,
-    type: 3}
-  minInstantiateRange: 2
-  maxInstantiateRange: 3
 --- !u!1 &6472389354669985226
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ TagManager:
   - StoneMine
   - WoodMine
   - BroomGiver
+  - Axe
+  - Pickaxe
   layers:
   - Default
   - TransparentFX

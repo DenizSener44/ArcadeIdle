@@ -16,6 +16,8 @@ namespace Player
         public Action OnSwordOpen { get; set; }
         public Action OnPlayerDead{ get; set; }
 
+        private ICameraShaker _cameraShaker;
+
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private HealthSystem healthSystem;
         [SerializeField] private AnimationController animationController;
@@ -38,8 +40,9 @@ namespace Player
         private VFXManager _vfxManager;
         
         
-        public void Construct(IInputData i,VFXManager v)
+        public void Construct(IInputData i,VFXManager v,ICameraShaker c)
         {
+            _cameraShaker = c;
             _vfxManager = v;
             _inputData = i;
             _inputData.OnInputStarted += InputStarted;
@@ -135,6 +138,7 @@ namespace Player
                     transform.DOLookAt(closeEnemies[0].transform.position, 0.5f);
                     animationController.Attack();
                     yield return new WaitForSeconds(attackAnimationDuration);
+                    _cameraShaker.ShakeCam(CameraShakeType.Hard);
                     _vfxManager.CreateBloodEffect(closeEnemies[0].transform.position + Vector3.up);
                     bool isEnemyDead = closeEnemies[0].Damage();
                     if (isEnemyDead)
