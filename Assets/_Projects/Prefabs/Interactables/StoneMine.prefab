@@ -54,7 +54,7 @@ MonoBehaviour:
   state: 2
   fillBar: {fileID: 3690139200378440994}
   health:
-    health: 5
+    health: 3
   collectable: {fileID: 8460491185569507138, guid: 95974934288880949ab48fd72726aaeb,
     type: 3}
   minInstantiateRange: 2

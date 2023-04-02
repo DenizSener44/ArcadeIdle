@@ -12,13 +12,13 @@ namespace InteractionSystem
         [SerializeField] private MeshFilter meshFilter;
         
         public float deformSpeed = 1f;
-        public float deformAmount = 0.1f; 
-        private Vector3[] _originalVertices;
+        public float deformAmount = 0.1f;
+        private Vector3[] _vertices;
         
         
         private void Start()
         {
-            _originalVertices = meshFilter.mesh.vertices.Clone() as Vector3[];
+            _vertices = meshFilter.mesh.vertices.Clone() as Vector3[];
         }
 
 
@@ -33,16 +33,15 @@ namespace InteractionSystem
             float deform = Mathf.Abs(Mathf.Sin(Time.time * deformSpeed) * deformAmount);
             
             Mesh mesh = meshFilter.mesh;
-            Vector3[] deformedVertices = new Vector3[_originalVertices.Length];
 
-            for (int i = 0; i < _originalVertices.Length; i++)
+            for (int i = 0; i < _vertices.Length; i++)
             {
-                Vector3 newPos = _originalVertices[i] - _originalVertices[i].normalized * (deform * Random.Range(0.3f,1.2f));
+                Vector3 newPos = _vertices[i] - _vertices[i].normalized * (deform * Random.Range(0.3f,1.2f));
 
-                deformedVertices[i] = newPos;
+                _vertices[i] = newPos;
             }
 
-            mesh.vertices = deformedVertices;
+            mesh.vertices = _vertices;
 
             mesh.RecalculateNormals();
             mesh.RecalculateTangents();

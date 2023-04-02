@@ -16,7 +16,7 @@ GameObject:
   m_TagString: WoodMine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6472389354030873586
 Transform:
@@ -54,7 +54,7 @@ MonoBehaviour:
   state: 3
   fillBar: {fileID: 5413019008335772481}
   health:
-    health: 7
+    health: 2
   collectable: {fileID: 8460491185569507138, guid: bcc9f318d2830694cbe5aa8f22e738af,
     type: 3}
   minInstantiateRange: 2
@@ -90,7 +90,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6472389354669985227
 Transform:
@@ -277,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 650272791173340755, guid: fb597aacf5068be49a87cec54968db9b,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 650272792323729938, guid: fb597aacf5068be49a87cec54968db9b,
         type: 3}
@@ -292,7 +292,7 @@ PrefabInstance:
     - target: {fileID: 650272792323729939, guid: fb597aacf5068be49a87cec54968db9b,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 8
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb597aacf5068be49a87cec54968db9b, type: 3}

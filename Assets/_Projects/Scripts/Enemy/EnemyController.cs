@@ -71,6 +71,7 @@ namespace Enemy
 
         private void Die()
         {
+            animationController.Die();
             if (_movingRoutine != null)
             {
                 StopCoroutine(_movingRoutine);
