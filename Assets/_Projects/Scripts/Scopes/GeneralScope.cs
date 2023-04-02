@@ -5,6 +5,7 @@ using Buildings;
 using Enemy;
 using InputSystem;
 using Player;
+using SideSystems;
 using UnityEngine;
 
 namespace Scopes
@@ -14,7 +15,7 @@ namespace Scopes
         #region Entries
 
         [SerializeField] private Joystick joystick;
-
+        [SerializeField] private VFXManager vfxManager;
         #endregion
 
 
@@ -52,7 +53,7 @@ namespace Scopes
         private void Inject()
         {
             playerMovementController.Construct(_inputData);
-            playerController.Construct(_inputData);
+            playerController.Construct(_inputData,vfxManager);
             enemyManager.Construct(_playerTransform,_swordOpener);
         }
         

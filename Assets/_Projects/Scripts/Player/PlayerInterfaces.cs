@@ -23,5 +23,6 @@ public enum StateNames
     Idle,
     Sword,
     Pickaxe,
-    Axe
+    Axe,
+    Broom
 }

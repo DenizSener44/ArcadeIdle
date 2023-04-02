@@ -13,9 +13,7 @@ namespace Player
     public class PlayerController : MonoBehaviour,ISwordOpener
     {
         public Action OnSwordOpen { get; set; }
-        
-        private IInputData _inputData;
-        
+
         [SerializeField] private HealthSystem healthSystem;
         [SerializeField] private AnimationController animationController;
         [SerializeField] private Transform toolHolder;
@@ -26,15 +24,20 @@ namespace Player
         [SerializeField] private float attackAnimationDuration;
         [SerializeField] private string enemySwordTag = "EnemySword";
         [SerializeField] private string enemyTag = "Enemy";
+        [SerializeField] private string broomGiverTag = "BroomGiver";
         [SerializeField] private float sphereCheckRadius = 5;
         [SerializeField] private string enemyLayer;
 
         private Coroutine _attackingRoutine;
         private bool _canAttack;
 
-
-        public void Construct(IInputData i)
+        private IInputData _inputData;
+        private VFXManager _vfxManager;
+        
+        
+        public void Construct(IInputData i,VFXManager v)
         {
+            _vfxManager = v;
             _inputData = i;
             _inputData.OnInputStarted += InputStarted;
             _inputData.OnInputReleased += InputReleased;
@@ -69,6 +72,13 @@ namespace Player
                 return;
             }
 
+            if (other.CompareTag(broomGiverTag))
+            {
+                SetState(StateNames.Broom);
+                _vfxManager.AddCleaner(transform);
+                return;
+            }
+            
             Interactable i = other.GetComponent<Interactable>();
             if (i)
             {
@@ -86,8 +96,10 @@ namespace Player
                 }
                 SetState(StateNames.Sword);
                 Destroy(s.gameObject);
+                return;
             }
-
+            
+            
         }
 
 
@@ -118,8 +130,8 @@ namespace Player
                     transform.DOLookAt(closeEnemies[0].transform.position, 0.5f);
                     animationController.Attack();
                     yield return new WaitForSeconds(attackAnimationDuration);
+                    _vfxManager.CreateBloodEffect(closeEnemies[0].transform.position + Vector3.up);
                     bool isEnemyDead = closeEnemies[0].Damage();
-                    Debug.Log(isEnemyDead);
                     if (isEnemyDead)
                     {
                         closeEnemies.RemoveAt(0);
@@ -155,6 +167,7 @@ namespace Player
 
         private void DestroyPreviousTool()
         {
+            _vfxManager.RemoveCleaner();
             foreach (Transform t in toolHolder.transform)
             {
                 Destroy(t.gameObject);

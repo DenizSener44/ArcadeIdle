@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - StoneMine
   - WoodMine
+  - BroomGiver
   layers:
   - Default
   - TransparentFX
