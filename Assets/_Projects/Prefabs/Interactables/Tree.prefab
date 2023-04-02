@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxManager: {fileID: 0}
+  audioType: 1
   interactionStartDuration: 0.5
   interactionCompleteAmount: 1
   interactionAnimationDuration: 1.1

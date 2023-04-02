@@ -12,6 +12,8 @@ namespace InteractionSystem
     public abstract class Interactable : MonoBehaviour
     {
         public VFXManager vfxManager;
+        public IAudioPlayer audioPlayer;
+        public AudioType audioType;
         
         public float interactionStartDuration;
         public float interactionCompleteAmount;
@@ -25,6 +27,7 @@ namespace InteractionSystem
         [SerializeField] private float maxInstantiateRange = 3;
         [SerializeField] private ParticleSystem effect;
         [SerializeField] private string toolTag = "Tool";
+       
         protected virtual void OnEnable()
         {
             fillBar.maxValue = interactionCompleteAmount;
@@ -51,6 +54,7 @@ namespace InteractionSystem
             fillBar.InitializeSlider();
             health.SpendHealth();
             CreateCollectable();
+            audioPlayer.PlayAudio(audioType);
         }
 
         

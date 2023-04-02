@@ -20,6 +20,7 @@ namespace Scopes
         [SerializeField] private VFXManager vfxManager;
         [SerializeField] private CameraManager cameraManager;
         [SerializeField] private TutorialUI tutorialUI;
+        [SerializeField] private AudioManager audioManager;
         #endregion
 
 
@@ -35,6 +36,9 @@ namespace Scopes
         private ITutorialChanger _tutorialChanger;
         private IPlayerStackCounter _playerStackCounter;
         private IPlayerKillCounter _playerKillCounter;
+
+        private IAudioPlayer _audioPlayer;
+        
         
         #endregion
 
@@ -73,19 +77,24 @@ namespace Scopes
             _tutorialChanger = tutorialUI;
             _playerStackCounter = playerStackController;
             _playerKillCounter = playerController;
+
+            _audioPlayer = audioManager;
         }
         
         private void Inject()
         {
             playerMovementController.Construct(_inputData);
-            playerController.Construct(_inputData,vfxManager,_cameraShaker);
+            playerController.Construct(_inputData,vfxManager,_cameraShaker,_audioPlayer);
             playerInteractionController.cameraShaker = _cameraShaker;
             playerStackController.cameraShaker = _cameraShaker;
             enemyManager.Construct(_playerTransform,_swordOpener);
             levelEndUI.Construct(_playerDeathController);
             tree.vfxManager = vfxManager;
+            tree.audioPlayer = _audioPlayer;
             stoneMine.vfxManager = vfxManager;
-            tutorialController.Construct(_cameraChanger,_tutorialChanger,playerStackController,_playerKillCounter);
+            stoneMine.audioPlayer = _audioPlayer;
+            
+            tutorialController.Construct(_cameraChanger,_tutorialChanger,_playerStackCounter,_playerKillCounter);
         }
         
     }

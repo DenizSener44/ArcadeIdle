@@ -39,15 +39,17 @@ namespace Player
 
         private IInputData _inputData;
         private VFXManager _vfxManager;
+        private IAudioPlayer _audioPlayer;
         
         
-        public void Construct(IInputData i,VFXManager v,ICameraShaker c)
+        public void Construct(IInputData i,VFXManager v,ICameraShaker c,IAudioPlayer audioPlayer)
         {
             _cameraShaker = c;
             _vfxManager = v;
             _inputData = i;
             _inputData.OnInputStarted += InputStarted;
             _inputData.OnInputReleased += InputReleased;
+            _audioPlayer = audioPlayer;
             SetState(StateNames.Idle);
             
         }
@@ -146,6 +148,7 @@ namespace Player
                     {
                         closeEnemies.RemoveAt(0);
                         PlayerKilledEnemy = true;
+                        _audioPlayer.PlayAudio(AudioType.Death);
                     }
                     
                     yield return new WaitForSeconds(timeBetweenAttacks - attackAnimationDuration);
@@ -189,6 +192,7 @@ namespace Player
         
         private void Die()
         {
+            _audioPlayer.PlayAudio(AudioType.Death);
             agent.isStopped = true;
             animationController.Die();
             OnPlayerDead.Invoke();
