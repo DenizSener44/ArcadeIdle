@@ -141,8 +141,8 @@ MonoBehaviour:
       type: 2}
     tool: {fileID: 11400000, guid: 0eb4929aedc841d40aacf6f23b966c06, type: 2}
   closeEnemies: []
-  timeBetweenAttacks: 1
-  attackAnimationDuration: 0.6
+  timeBetweenAttacks: 3
+  attackAnimationDuration: 1.05
   enemySwordTag: EnemySword
   enemyTag: Enemy
   broomGiverTag: BroomGiver
@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439e6bbda5cd7e743a08b7c8ccf096c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationController: {fileID: 7194649807581985205}
   interactionspeed: 1
 --- !u!114 &5322840135285089102
 MonoBehaviour:

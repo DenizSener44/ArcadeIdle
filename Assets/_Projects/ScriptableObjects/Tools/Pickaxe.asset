@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e8b2637d8ec9347817e49d758149f9, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  achieved: 0
+  achieved: 1
   tool: {fileID: 4034065579135889741, guid: d239f5ceecff3784dbd143f8b30ad9ec, type: 3}

@@ -8,6 +8,7 @@ namespace Player
 {
     public class PlayerInteractionController : MonoBehaviour
     {
+        [SerializeField] private AnimationController animationController;
         [SerializeField] private float interactionspeed;
         
         private Interactable _interactable;
@@ -43,8 +44,9 @@ namespace Player
             yield return new WaitForSeconds(_interactable.interactionStartDuration);
             while (_interactable.CanContinueInteraction())
             {
+                animationController.Attack();
                 _interactable.StartInteraction(interactionspeed);
-                yield return new WaitForSeconds(_interactable.interactionCompleteAmount / interactionspeed);
+                yield return new WaitForSeconds(_interactable.interactionAnimationDuration);
                 _interactable.CompleteInteraction();
             }
         }

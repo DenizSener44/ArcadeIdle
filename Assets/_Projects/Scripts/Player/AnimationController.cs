@@ -12,14 +12,16 @@ namespace Player
         [SerializeField] private Animator animator;
         [SerializeField] private string speedAnimationName = "Speed";
         [SerializeField] private string attackAnimationName = "Attack";
+        [SerializeField] private string deathAnimationName = "Death";
         
         private int _speedHash;
         private int _attackHash;
-
+        private int _deathHash;
         private void Start()
         {
             _speedHash = Animator.StringToHash(speedAnimationName);
             _attackHash = Animator.StringToHash(attackAnimationName);
+            _deathHash = Animator.StringToHash(deathAnimationName);
         }
 
         private void Update()
@@ -36,6 +38,11 @@ namespace Player
         public void SetOverride(AnimatorOverrideController animatorOverrideController)
         {
             animator.runtimeAnimatorController = animatorOverrideController;
+        }
+
+        public void Die()
+        {
+            animator.SetTrigger(_deathHash);
         }
     }
 }

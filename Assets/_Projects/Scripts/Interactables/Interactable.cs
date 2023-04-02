@@ -11,13 +11,16 @@ namespace InteractionSystem
     {
         public float interactionStartDuration;
         public float interactionCompleteAmount;
-
+        public float interactionAnimationDuration;
+        public StateNames state;
+        
         [SerializeField] protected UIFillBarController fillBar;
         [SerializeField] protected HealthSystem health;
         [SerializeField] private Collectable collectable;
         [SerializeField] private float minInstantiateRange = 2;
         [SerializeField] private float maxInstantiateRange = 3;
-        public StateNames state;
+        
+        
 
         protected virtual void OnEnable()
         {

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e8b2637d8ec9347817e49d758149f9, type: 3}
   m_Name: Idle
   m_EditorClassIdentifier: 
-  achieved: 0
+  achieved: 1
   tool: {fileID: 5487771227852378643, guid: adcbbc6580ee7fd4ebee91b84eb96f3c, type: 3}

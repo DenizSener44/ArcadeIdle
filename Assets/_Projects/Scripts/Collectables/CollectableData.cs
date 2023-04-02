@@ -8,5 +8,6 @@ namespace Collectables
     public class CollectableData : ScriptableObject
     {
         public int loadAmount;
+        public Sprite sprite;
     }
 }

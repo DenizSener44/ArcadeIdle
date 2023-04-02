@@ -8,6 +8,11 @@ public interface ISwordOpener
     public Action OnSwordOpen { get; set; }
 }
 
+public interface IPlayerDeathController
+{
+    public Action OnPlayerDead{ get; set; }
+}
+
 
 [Serializable]
 public struct States

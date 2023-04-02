@@ -6,6 +6,7 @@ using Enemy;
 using InputSystem;
 using Player;
 using SideSystems;
+using UI;
 using UnityEngine;
 
 namespace Scopes
@@ -24,6 +25,7 @@ namespace Scopes
         private IInputData _inputData;
         private Transform _playerTransform;
         private ISwordOpener _swordOpener;
+        private IPlayerDeathController _playerDeathController;
         #endregion
 
         #region Subjects
@@ -31,6 +33,7 @@ namespace Scopes
         [SerializeField] private PlayerMovementController playerMovementController;
         [SerializeField] private PlayerController playerController;
         [SerializeField] private EnemyManager enemyManager;
+        [SerializeField] private LevelEndUI levelEndUI;
 
         #endregion
 
@@ -48,6 +51,7 @@ namespace Scopes
             _inputData = joystick;
             _playerTransform = playerMovementController.transform;
             _swordOpener = playerController;
+            _playerDeathController = playerController;
         }
         
         private void Inject()
@@ -55,6 +59,7 @@ namespace Scopes
             playerMovementController.Construct(_inputData);
             playerController.Construct(_inputData,vfxManager);
             enemyManager.Construct(_playerTransform,_swordOpener);
+            levelEndUI.Construct(_playerDeathController);
         }
         
     }

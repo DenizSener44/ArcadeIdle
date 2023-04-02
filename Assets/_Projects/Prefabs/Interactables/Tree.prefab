@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionStartDuration: 0.5
   interactionCompleteAmount: 1
+  interactionAnimationDuration: 1.1
+  state: 3
   fillBar: {fileID: 5413019008335772481}
   health:
     health: 7
@@ -69,7 +71,6 @@ MonoBehaviour:
     type: 3}
   minInstantiateRange: 2
   maxInstantiateRange: 3
-  state: 3
 --- !u!1 &6472389354669985226
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0697e629212554e479c98688ab56b872, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

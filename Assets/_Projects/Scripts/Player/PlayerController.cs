@@ -7,13 +7,16 @@ using InteractionSystem;
 using SideSystems;
 using Tools;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour,ISwordOpener
+    public class PlayerController : MonoBehaviour,ISwordOpener,IPlayerDeathController
     {
         public Action OnSwordOpen { get; set; }
+        public Action OnPlayerDead{ get; set; }
 
+        [SerializeField] private NavMeshAgent agent;
         [SerializeField] private HealthSystem healthSystem;
         [SerializeField] private AnimationController animationController;
         [SerializeField] private Transform toolHolder;
@@ -41,6 +44,8 @@ namespace Player
             _inputData = i;
             _inputData.OnInputStarted += InputStarted;
             _inputData.OnInputReleased += InputReleased;
+            SetState(StateNames.Idle);
+            
         }
 
         private void OnDisable()
@@ -178,7 +183,9 @@ namespace Player
         
         private void Die()
         {
-            
+            agent.isStopped = true;
+            animationController.Die();
+            OnPlayerDead.Invoke();
         }
         
     }

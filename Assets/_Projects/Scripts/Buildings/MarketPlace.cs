@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Collectables;
 using DG.Tweening;
 using Tools;
+using UI;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Buildings
 {
@@ -17,6 +21,34 @@ namespace Buildings
         
         [SerializeField] private float minInstantiateRange = 2;
         [SerializeField] private float maxInstantiateRange = 3;
+
+        [SerializeField] private RectTransform marketPlaceCanvas;
+        [SerializeField] private MarketPlaceItem itemPrefab;
+
+
+        private Dictionary<CollectableData, int> _priceList = new FlexibleDictionary<CollectableData, int>();
+
+        [SerializeField] private List<MarketPlaceItem> items = new List<MarketPlaceItem>();
+
+        private void Start()
+        {
+            foreach (CollectableData c in price)
+            {
+                if (_priceList.ContainsKey(c))
+                {
+                    _priceList[c] += 1;
+                }
+                else
+                {
+                    _priceList.Add(c,1);
+                }
+            }
+
+            CreateUI();
+        }
+
+        
+
 
         public bool CanContinueInteraction(List<Collectable> collectables, out Collectable collectable)
         {
@@ -51,14 +83,36 @@ namespace Buildings
 
         public void CompleteInteraction(Collectable collectable)
         {
-            price.Remove(collectable.data);
+            if (_priceList.ContainsKey(collectable.data))
+            {
+                _priceList[collectable.data] -= 1;
+                if (_priceList[collectable.data] <= 0)
+                {
+                    _priceList.Remove(collectable.data);
+                }
+            }
             collectable.transform.SetParent(transform);
             collectable.transform.DOLocalJump(Vector3.zero, 0, 1, 0.5f).OnComplete(ReduceCollectable);
         }
 
         private void ReduceCollectable()
         {
-            
+            for (int i = items.Count-1; i >= 0; i--)
+            {
+                Destroy(items[i].gameObject);
+            }
+            items.Clear();
+            CreateUI();
+        }
+        
+        private void CreateUI()
+        {
+            foreach (CollectableData data in _priceList.Keys)
+            {
+                MarketPlaceItem m = Instantiate(itemPrefab, marketPlaceCanvas);
+                m.Set(_priceList[data].ToString(),data.sprite);
+                items.Add(m);
+            }
         }
         
         private void ObjectBought()
