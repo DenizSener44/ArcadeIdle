@@ -19,6 +19,7 @@ namespace Scopes
         [SerializeField] private Joystick joystick;
         [SerializeField] private VFXManager vfxManager;
         [SerializeField] private CameraManager cameraManager;
+        [SerializeField] private TutorialUI tutorialUI;
         #endregion
 
 
@@ -29,6 +30,12 @@ namespace Scopes
         private ISwordOpener _swordOpener;
         private IPlayerDeathController _playerDeathController;
         private ICameraShaker _cameraShaker;
+
+        private ICameraChanger _cameraChanger;
+        private ITutorialChanger _tutorialChanger;
+        private IPlayerStackCounter _playerStackCounter;
+        private IPlayerKillCounter _playerKillCounter;
+        
         #endregion
 
         #region Subjects
@@ -41,6 +48,7 @@ namespace Scopes
         [SerializeField] private LevelEndUI levelEndUI;
         [SerializeField] private Interactable stoneMine;
         [SerializeField] private Interactable tree;
+        [SerializeField] private TutorialController tutorialController;
 
         #endregion
 
@@ -60,6 +68,11 @@ namespace Scopes
             _swordOpener = playerController;
             _playerDeathController = playerController;
             _cameraShaker = cameraManager;
+
+            _cameraChanger = cameraManager;
+            _tutorialChanger = tutorialUI;
+            _playerStackCounter = playerStackController;
+            _playerKillCounter = playerController;
         }
         
         private void Inject()
@@ -72,6 +85,7 @@ namespace Scopes
             levelEndUI.Construct(_playerDeathController);
             tree.vfxManager = vfxManager;
             stoneMine.vfxManager = vfxManager;
+            tutorialController.Construct(_cameraChanger,_tutorialChanger,playerStackController,_playerKillCounter);
         }
         
     }

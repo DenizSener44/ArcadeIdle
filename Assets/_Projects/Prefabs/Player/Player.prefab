@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d03f977715ccd46aa755f0d6a92bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 2931921593603804269}
   healthSystem:
     health: 3
   animationController: {fileID: 7194649807581985205}
@@ -210,6 +211,7 @@ MonoBehaviour:
   animator: {fileID: 1597481528203936086}
   speedAnimationName: Speed
   attackAnimationName: Attack
+  deathAnimationName: Death
 --- !u!195 &2931921593603804269
 NavMeshAgent:
   m_ObjectHideFlags: 0

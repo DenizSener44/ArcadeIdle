@@ -57,7 +57,7 @@ namespace Buildings
                 collectable = null;
                 return false;
             }
-            if (price.Count <1)
+            if (_priceList.Keys.Count <1)
             {
                 collectable = null;
                 ObjectBought();

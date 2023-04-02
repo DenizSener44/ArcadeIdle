@@ -11,10 +11,11 @@ using UnityEngine.AI;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour,ISwordOpener,IPlayerDeathController
+    public class PlayerController : MonoBehaviour,ISwordOpener,IPlayerDeathController,IPlayerKillCounter
     {
         public Action OnSwordOpen { get; set; }
         public Action OnPlayerDead{ get; set; }
+        public bool PlayerKilledEnemy { get; set; }
 
         private ICameraShaker _cameraShaker;
 
@@ -144,6 +145,7 @@ namespace Player
                     if (isEnemyDead)
                     {
                         closeEnemies.RemoveAt(0);
+                        PlayerKilledEnemy = true;
                     }
                     
                     yield return new WaitForSeconds(timeBetweenAttacks - attackAnimationDuration);
@@ -191,6 +193,7 @@ namespace Player
             animationController.Die();
             OnPlayerDead.Invoke();
         }
+
         
     }
 

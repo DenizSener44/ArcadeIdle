@@ -6,11 +6,13 @@ using UnityEngine;
 
 namespace SideSystems
 {
-    public class CameraManager : MonoBehaviour,ICameraShaker
+    public class CameraManager : MonoBehaviour,ICameraShaker,ICameraChanger
     {
         [SerializeField] private CinemachineVirtualCamera gameCam;
         [SerializeField] private CameraShakeData[] cameraShakeDatas;
 
+        [SerializeField] private CameraChangeData[] cameraChangeDatas;
+        
         private CinemachineBasicMultiChannelPerlin _cmp;
         private Coroutine _shakeCamRoutine;
 
@@ -50,10 +52,30 @@ namespace SideSystems
             _cmp.m_AmplitudeGain = 0;
             _shakeCamRoutine = null;
         }
-        
-        
-        
-        
+
+
+        public void OpenCam(CameraType type)
+        {
+            foreach (CameraChangeData cameraChangeData in cameraChangeDatas)
+            {
+                if (cameraChangeData.type == type)
+                {
+                    cameraChangeData.camera.Priority = 11;
+                }
+                else
+                {
+                    cameraChangeData.camera.Priority = 9;
+                }
+            }
+        }
+
+        public void CloseCam()
+        {
+            foreach (CameraChangeData cameraChangeData in cameraChangeDatas)
+            {
+                cameraChangeData.camera.Priority = 9;
+            }
+        }
     }
 
 }
