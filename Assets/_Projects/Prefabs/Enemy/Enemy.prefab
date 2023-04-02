@@ -72,6 +72,7 @@ MonoBehaviour:
   animator: {fileID: 3314919818821945999}
   speedAnimationName: Speed
   attackAnimationName: Attack
+  deathAnimationName: Death
 --- !u!195 &9181260375295137363
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -190,7 +191,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySword
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9084605925550452858, guid: 5e9566aa10079ce44916457b59c348d9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6535908829116338110, guid: 5e9566aa10079ce44916457b59c348d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5e9566aa10079ce44916457b59c348d9, type: 3}
 --- !u!1001 &9181260376036636446
 PrefabInstance:

@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 9181260375295137362, guid: 0421085014aad994a819d0d018cd503d,
     type: 3}
-  timeToInstantiateNewEnemy: 25
+  timeToInstantiateNewEnemy: 50
   minInstantiateRange: 20
   maxInstantiateRange: 30
