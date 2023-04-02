@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxManager: {fileID: 0}
+  audioType: 0
   interactionStartDuration: 0.5
   interactionCompleteAmount: 1
   interactionAnimationDuration: 1.1
@@ -88,7 +89,6 @@ GameObject:
   - component: {fileID: 9161185535149831643}
   - component: {fileID: 4984136090156703383}
   - component: {fileID: 772257581052171021}
-  - component: {fileID: 3867143727495114943}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -161,19 +161,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3867143727495114943
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7781335003246118433}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2953334881668879202
 PrefabInstance:
   m_ObjectHideFlags: 0
